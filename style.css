@@ -1,0 +1,90 @@
+:root{--red:#d1002f;--deep:#2a0008;--gold:#f5c77a;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;background:radial-gradient(circle at 50% 30%,#5a0014,var(--deep) 70%);color:#ffe9ec;font-family:Georgia,serif;text-align:center;overflow-x:hidden}
+h1{font-size:clamp(1.6rem,5vw,2.6rem);color:var(--gold);letter-spacing:3px;text-shadow:0 0 18px var(--red)}
+.sub{opacity:.8;font-style:italic;margin:.3rem 0 1rem}
+section{display:none;min-height:100vh;padding:24px 16px 90px;animation:fade .6s}
+section.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}}
+/* gate */
+#gate{position:fixed;inset:0;z-index:9;background:var(--deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+button{font:inherit;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--red),#7a0019);border:1px solid var(--gold);border-radius:30px;padding:12px 26px;box-shadow:0 0 16px #d1002f88;transition:.2s}
+button:hover{transform:scale(1.07)}
+/* rose */
+.rose{position:relative;width:200px;height:330px;margin:20px auto 0;animation:sway 5s ease-in-out infinite;transform-origin:50% 100%;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.rose::before{content:"";position:absolute;left:-90px;top:-70px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,#ff2a5588,#d1002f22 50%,transparent 70%);animation:halo 3s ease-in-out infinite;pointer-events:none}
+@keyframes halo{50%{transform:scale(1.18);opacity:.6}}
+.bloom{animation:beat 2.4s ease-in-out 1.8s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.07)}24%{transform:scale(1)}36%{transform:scale(1.05)}}
+.rose.pop .bloom{animation:pop .7s ease}
+@keyframes pop{40%{transform:scale(1.3) rotate(8deg)}}
+@keyframes flutter{0%,100%{transform:translate(-50%,-50%) rotate(var(--r))}50%{transform:translate(-50%,-50%) rotate(calc(var(--r) + 7deg)) scale(1.05)}}
+.glint{position:absolute;left:70px;top:58px;width:8px;height:14px;border-radius:50%;background:#fff;opacity:.0;transform:rotate(30deg);animation:glint 3.5s ease-in-out 2s infinite;filter:blur(1px)}
+@keyframes glint{40%,60%{opacity:.85}}
+@keyframes grow{from{transform:scaleY(0)}}
+@keyframes wave{50%{transform:var(--t) rotate(10deg)}}
+.fly{position:fixed;width:5px;height:5px;border-radius:50%;background:#ffd98a;box-shadow:0 0 10px 3px #ffb347;pointer-events:none;animation:rise linear forwards;z-index:1}
+@keyframes rise{from{opacity:0}20%{opacity:1}to{transform:translate(var(--dx),-140px);opacity:0}}
+.hrt{position:fixed;pointer-events:none;font-size:20px;animation:rise 2s ease-out forwards;z-index:2}
+@keyframes sway{50%{transform:rotate(3deg)}0%,100%{transform:rotate(-3deg)}}
+.bloom{position:absolute;left:10px;top:0;width:180px;height:180px;filter:drop-shadow(0 0 22px #ff2a55)}
+.p{position:absolute;left:50%;top:50%;border-radius:50% 0 50% 50%;background:radial-gradient(circle at 30% 30%,#ff4d6d,#b0002a 70%,#5e0016);border:1px solid #ff9aa8;box-shadow:inset -8px -10px 16px #4a001099,inset 6px 6px 12px #ffb3bd44,0 0 6px #6a001a;animation:open 1.4s cubic-bezier(.2,1.4,.4,1) backwards,breathe 4s ease-in-out infinite}
+@keyframes open{from{transform:translate(-50%,-50%) rotate(0) scale(0)}}
+@keyframes breathe{50%{filter:brightness(1.25)}}
+.stem{position:absolute;left:96px;top:150px;width:8px;height:180px;background:linear-gradient(#2e8b3a,#0f4a1c);border-radius:4px;transform-origin:bottom;animation:grow 1.2s ease-out backwards}
+.leaf{position:absolute;width:46px;height:22px;background:linear-gradient(135deg,#3cb34a,#14561f);border-radius:0 100% 0 100%;transform:var(--t);animation:wave 3s ease-in-out infinite;transform-origin:0 100%}
+.l1{left:104px;top:230px;--t:rotate(-20deg)}.l2{left:50px;top:262px;--t:scaleX(-1) rotate(-20deg);animation-delay:-1.5s}
+.petal{position:fixed;top:-20px;width:12px;height:16px;background:#e0173f;border-radius:50% 0 50% 50%;pointer-events:none;animation:fall linear forwards;z-index:1}
+@keyframes fall{to{transform:translate(var(--dx),105vh) rotate(720deg);opacity:.3}}
+.menu{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+/* letter */
+.paper{max-width:560px;margin:20px auto;padding:28px;background:linear-gradient(#fff4e6,#f3d9c4);color:#4a0a14;border-radius:8px;box-shadow:0 10px 40px #000a;border:2px solid var(--gold);line-height:1.8;text-align:left;white-space:pre-wrap;animation:fade .8s}
+.env{font-size:5rem;cursor:pointer;animation:bob 1.6s infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+/* game */
+canvas{width:min(100%,960px);image-rendering:pixelated;border:3px solid var(--gold);border-radius:8px;background:#000;box-shadow:0 0 30px #d1002f88;touch-action:none}
+.pad{display:flex;justify-content:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.pad button{padding:16px 22px;font-size:1.3rem;user-select:none;touch-action:none}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center;gap:8px;padding:10px;background:#1a0006ee;border-top:1px solid var(--gold);z-index:5}
+nav button{padding:8px 16px;font-size:.9rem}
+.core{position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px;border-radius:50%;background:repeating-conic-gradient(from 0deg,#7a0019 0 25deg,#c4003a 25deg 50deg),#7a0019;box-shadow:inset 0 0 10px #2a0008,0 0 12px #ff2a55;animation:spin 12s linear infinite}
+.core::after{content:"";position:absolute;inset:9px;border-radius:50%;background:radial-gradient(#ff4d6d,#6a0017)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.dew{position:absolute;width:9px;height:11px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 35% 30%,#fff,#bfe9ff88 45%,#ffffff22);box-shadow:0 2px 4px #0008;animation:drip 4s ease-in-out infinite}
+@keyframes drip{50%{transform:translateY(3px) scale(1.1)}}
+.sepal{position:absolute;left:92px;top:152px;width:16px;height:40px;background:linear-gradient(#3cb34a,#14561f);clip-path:polygon(50% 100%,0 0,100% 0);transform-origin:50% 0;animation:wave 4s ease-in-out infinite;--t:rotate(var(--a))}
+.sepal{transform:rotate(var(--a))}
+.th{position:absolute;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent}
+
+/* ---- bouquet menu + living background ---- */
+#menu{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#1d1233 0,#0a0714 60%,#04030a 100%)}
+#menu>*:not(#bgl){position:relative;z-index:2}
+#bgl{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.mist{position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(transparent,#0f3a2260);animation:mist 8s ease-in-out infinite}
+@keyframes mist{50%{opacity:.55}}
+.st{position:absolute;border-radius:50%;background:#cfd6ff;animation:tw ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.9}}
+.bh{position:absolute;color:#ff8fab;line-height:1;opacity:0;animation:hf ease-in-out forwards;text-shadow:0 0 14px #ff8fab88}
+.bh.ring{display:flex;align-items:center;justify-content:center;border:3px solid #ff8fabbb;border-radius:50%;text-shadow:none}
+@keyframes hf{0%{opacity:0;transform:translate(0,30px) scale(.6)}20%{opacity:.85}80%{opacity:.7}100%{opacity:0;transform:translate(var(--dx),-140px) scale(1.15) rotate(14deg)}}
+.rose{width:min(470px,94vw);height:auto;margin:8px auto 0;animation:none}
+.rose svg{width:100%;height:auto;display:block;overflow:visible}
+.rose::before{left:-10%;top:-8%;width:120%;height:75%;background:radial-gradient(circle,#ff9bb544,#ff9bb511 50%,transparent 70%)}
+.sw{animation:sw 6s ease-in-out infinite;transform-origin:200px 400px}
+@keyframes sw{0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(1.4deg)}}
+.fb{animation:fb 4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes fb{50%{transform:rotate(5deg) scale(1.06)}}
+.lv{animation:lw 4s ease-in-out infinite;transform-box:fill-box;transform-origin:0 50%}
+@keyframes lw{50%{transform:rotate(8deg)}}
+.gr{animation:gr 5s ease-in-out infinite;transform-origin:50% 100%;transform-box:fill-box}
+@keyframes gr{50%{transform:rotate(3deg)}}
+.ff{animation:ff ease-in-out infinite}
+@keyframes ff{0%,100%{opacity:0;transform:translate(0,0)}50%{opacity:1;transform:translate(6px,-10px)}}
+.rose.pop svg{animation:pop2 .7s ease;transform-origin:50% 100%}
+@keyframes pop2{40%{transform:scale(1.07)}}
+.petal{background:#ff9bb5}
+.bl2{animation:bl2 5s ease-in-out infinite;transform-box:fill-box;transform-origin:0 50%}
+@keyframes bl2{50%{transform:rotate(2.5deg)}}
+@keyframes fb{50%{transform:rotate(3deg) scale(1.03)}}
+.rose::before{background:radial-gradient(circle,#ffb34733,#ff7a3011 50%,transparent 70%)}
+.bh.tr::after{content:"";position:absolute;left:55%;top:55%;width:64px;height:9px;border-radius:9px;background:linear-gradient(90deg,#ff8fab77,transparent);transform-origin:0 50%;transform:rotate(30deg);z-index:-1}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>For You 🌹</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="gate">
+    <div style="font-size:4rem">🌹</div>
+    <h1>Something for you</h1>
+    <button id="enter">Tap to enter ♪</button>
+</div>
+
+
+<section id="menu" class="on">
+    <h1>Isa Lang</h1>
+    <p class="sub">♪ Arthur Nery — now playing</p>
+    <div class="rose" id="rose"></div>
+    <div class="menu">
+        <button data-go="letter">💌 My Letter</button>
+        <button data-go="game">🎮 Play</button>
+        <button id="mute">🔊 Music</button>
+    </div>
+</section>
+
+
+<section id="letter">
+    <h1>A Letter For You</h1>
+    <p class="sub">tap the envelope</p>
+    <div class="env" id="env">💌</div>
+    <div class="paper" id="paper" hidden></div>
+</section>
+
+
+<section id="game">
+    <h1>Her Little Quest 🖤</h1>
+    <p class="sub">Beat the boy... then watch what happens</p>
+    <canvas id="cv" width="480" height="270"></canvas>
+    <div class="pad">
+        <button data-k="left">◀</button><button data-k="right">▶</button>
+        <button data-k="up">▲</button><button data-k="down">▼</button>
+        <button data-k="hit">👊 Hit</button><button data-k="dash">⚡ Dash</button><button data-k="throw">🌹 Throw</button>
+    </div>
+    <p class="sub">Arrows/WASD move · Space hit · Shift dash · E throw a rose · grab 💖 for a SUPER hit</p>
+</section>
+
+<nav>
+    <button data-go="menu">🌹 Menu</button><button data-go="letter">💌 Letter</button><button data-go="game">🎮 Game</button>
+</nav>
+
+<audio id="song" src="isa-lang.mp3" loop></audio>
+
+<script src="index.js"></script>
+</body>
+</html>
